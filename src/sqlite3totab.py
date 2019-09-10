@@ -15,9 +15,9 @@ with open("Güncel Türkçe Sözlük - Türk Dil Kurumu 2011.txt", "w") as f:
             ozellik_tamad = ""
             for m in cn.execute("select ozellik_id from anlam_ozellik where anlam_id=?", (l["anlam_id"],)):
                 for n in cn.execute("select tam_adi from ozellik where ozellik_id=?", (m["ozellik_id"],)):
-                    ozellik_tamad = ozellik_tamad+str(n["tam_adi"])+", "
+                    ozellik_tamad = ozellik_tamad+"("+n["tam_adi"]+") "
             if (ozellik_tamad):
-                f.write(ozellik_tamad+"\\n")
+                f.write(ozellik_tamad)
             f.write(l["anlam"]+"\\n\\n")
         f.write("\n")
         cnt = cnt+1
